@@ -6,15 +6,15 @@ import 'package:flutter/services.dart';
 class DirectShare {
   static const MethodChannel _channel = const MethodChannel('direct_share');
 
-  static Future<String> get platformVersion async {
-    final String version = await _channel.invokeMethod('getPlatformVersion');
+  static Future<String?> get platformVersion async {
+    final String? version = await _channel.invokeMethod('getPlatformVersion');
     return version;
   }
 
   static Future<void> share(
       String text, String type, String sharePlatform, String sendTo,
-      {Rect sharePositionOrigin,
-      String sharePanelTitle,
+      {Rect? sharePositionOrigin,
+      String? sharePanelTitle,
       String subject = "",
       String extraText = ""}) {
     assert(text != null);
@@ -34,10 +34,10 @@ class DirectShare {
 
   static Future<void> _shareInner(
       List<String> list, String type, String sharePlatform, String sendTo,
-      {Rect sharePositionOrigin,
-      String sharePanelTitle,
-      String subject,
-      String extraText}) {
+      {Rect? sharePositionOrigin,
+      String? sharePanelTitle,
+      String? subject,
+      String? extraText}) {
     assert(list != null && list.isNotEmpty);
     final Map<String, dynamic> params = <String, dynamic>{
       'list': list,

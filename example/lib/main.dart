@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:io';
 
 import 'package:direct_share/direct_share.dart';
 import 'package:flutter/material.dart';
@@ -56,12 +55,13 @@ class _MyAppState extends State<MyApp> {
             Center(
               child: Text('Running on: $_platformVersion\n'),
             ),
-            RaisedButton(
+            TextButton(
               onPressed: () async {
-                File f =
-                    await ImagePicker.pickImage(source: ImageSource.gallery);
+                PickedFile f =
+                    await ImagePicker().getImage(source: ImageSource.gallery);
+
                 if (f != null) {
-                  DirectShare.share(f.path, "image", "whatsapp", "919760859474",
+                  DirectShare.share(f.path, "image", "whatsapp", "919876543210",
                       sharePanelTitle: "share image title",
                       extraText: "Hello boiii",
                       subject: "share image subject");
@@ -69,13 +69,13 @@ class _MyAppState extends State<MyApp> {
               },
               child: Text("share image"),
             ),
-            RaisedButton(
+            TextButton(
               onPressed: () async {
-                File f =
-                    await ImagePicker.pickImage(source: ImageSource.gallery);
+                PickedFile f =
+                    await ImagePicker().getImage(source: ImageSource.gallery);
                 if (f != null) {
                   DirectShare.share(
-                      f.path, "image", "telegram", "+919760859474",
+                      f.path, "image", "telegram", "+919876543210",
                       sharePanelTitle: "share image title",
                       extraText: "Hello boiii",
                       subject: "share image subject");
@@ -83,12 +83,12 @@ class _MyAppState extends State<MyApp> {
               },
               child: Text("share image"),
             ),
-            RaisedButton(
+            TextButton(
               onPressed: () async {
-                File f =
-                    await ImagePicker.pickImage(source: ImageSource.gallery);
+                PickedFile f =
+                    await ImagePicker().getImage(source: ImageSource.gallery);
                 if (f != null) {
-                  DirectShare.share(f.path, "image", "all", "+919760859474",
+                  DirectShare.share(f.path, "image", "all", "+919876543210",
                       sharePanelTitle: "share image title",
                       extraText: "Hello boiii",
                       subject: "share image subject");
